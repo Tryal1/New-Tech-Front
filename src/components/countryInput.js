@@ -27,14 +27,13 @@ const CountryInput = ({ label, ...props }) => {
     dataCountry();
   }, []);
 
-  console.log(value)
 
   return (
     <Grid item md={12}>
       <FormControl style={{ width: "350px" }}>
         <InputLabel>{label}</InputLabel>
         <Input
-          name={name}
+         {...field}
           value={search}
           onChange={(e) => {
             setSearch(e.target.value);

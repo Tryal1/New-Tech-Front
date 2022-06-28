@@ -44,7 +44,7 @@ const Contacto = () => {
         onSubmit={(values) => {
           console.log(values);
           // axios.get("http://localhost:4000/").then((response) => {console.log(response)})
-           axios.post("http://localhost:4000/enviar", values).then(response =>{response.data && setErrores(true)});
+           axios.post("http://localhost:4000/enviar", values).then(response =>{response.data.message != "" ? setErrores(true): setErrores(false);console.log(response)});
         }}
         validate={validates}
       >
