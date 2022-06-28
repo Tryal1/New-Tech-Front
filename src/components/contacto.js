@@ -5,6 +5,7 @@ import TextInput from "./textinput";
 import axios from "axios";
 
 import { Container, Button, Grid, Box } from "@material-ui/core";
+import { useState } from "react";
 
 const validates = (values) => {
   const errors = {};
@@ -29,6 +30,7 @@ const validates = (values) => {
 };
 
 const Contacto = () => {
+  const [errores, setErrores] = useState(false);
   return (
     <Container maxWidth="md">
       <Formik
@@ -41,8 +43,9 @@ const Contacto = () => {
         }}
         onSubmit={(values) => {
           console.log(values);
-          axios.post("http://localhost:4000/enviar", values);
+          axios.post("http://localhost:4000/enviar", values).then(response =>{response.data && setErrores(true)});
         }}
+        
         validate={validates}
       >
         <Box mt={10}>
@@ -54,7 +57,6 @@ const Contacto = () => {
               <CountryInput name="country" label="Pais" />
               <TextArea name="comments" label="Comentario" />
             </Grid>
-
             <Box mt={1}>
               <Button variant="contained" type="submit" color="primary">
                 Enviar
@@ -63,6 +65,8 @@ const Contacto = () => {
           </Form>
         </Box>
       </Formik>
+      {errores && <p>Datos no validos o campos faltantes</p>}
+     
     </Container>
   );
 };

@@ -11,7 +11,6 @@ const CountryInput = ({ label, ...props }) => {
   const [enable, setEnable] = useState(false);
 
   const addCountry = (values) => {
-    console.log(values);
     setSearch(values);
     setEnable(!enable);
   };
@@ -49,7 +48,7 @@ const CountryInput = ({ label, ...props }) => {
                 country.toLowerCase().includes(search.toLowerCase())
               )
               .map((country) => (
-                <div key={country} onClick={() => addCountry(country)}>
+                <div key={country} onClick={() => {addCountry(country)}}>
                   {country}
                 </div>
               ))}
