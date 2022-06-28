@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+p{
+  color: #ff0000;
+}
+
+.enable{
+  width: 350px;
+  max-height: 250px;
+  overflow-y: scroll;
+}
