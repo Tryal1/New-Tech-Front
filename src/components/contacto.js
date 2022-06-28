@@ -43,9 +43,9 @@ const Contacto = () => {
         }}
         onSubmit={(values) => {
           console.log(values);
-          axios.post("http://localhost:4000/enviar", values).then(response =>{response.data && setErrores(true)});
+          // axios.get("http://localhost:4000/").then((response) => {console.log(response)})
+           axios.post("http://localhost:4000/enviar", values).then(response =>{response.data && setErrores(true)});
         }}
-        
         validate={validates}
       >
         <Box mt={10}>
@@ -66,7 +66,6 @@ const Contacto = () => {
         </Box>
       </Formik>
       {errores && <p>Datos no validos o campos faltantes</p>}
-     
     </Container>
   );
 };
